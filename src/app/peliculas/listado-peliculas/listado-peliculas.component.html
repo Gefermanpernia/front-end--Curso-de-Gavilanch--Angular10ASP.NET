@@ -1,31 +1,36 @@
 <app-listado-generico [listado]="peliculas">
-  <ng-container vacio>
+  <!-- <ng-container vacio>
     <div>Mensaje personalizado para contenido <b>Vacío</b></div>
-  </ng-container>
+  </ng-container> -->
 
   <ng-container contenido>
 
+    <div class="peliculas-contenedor">
     <div
       *ngFor="let pelicula of peliculas; let index = index"
-       class="pelicula-contenerdor">
+       class="pelicula-contenedor">
 
-      <div>
-        <h2>
-          Pelicula {{index}}: {{ pelicula.titulo }}
-          <button (click)="remover(index)" style="margin-left: 1rem">Remover</button>
-        </h2>
-        </div>
-        <div>
-        {{
-        pelicula.fechaLanzamiento | date:"dd--MMMM--yyyy" | uppercase
-      }}
 
-      </div>
-      <div>
-        {{pelicula.precio | currency}}
-      </div>
+       <a>
+         <img [src]="pelicula.poster" alt="Poster">
+       </a>
+       <p>
+         <a> {{pelicula.titulo}} </a>
+       </p>
+       <div>
+         <a mat-flat-button color="primary">
+           Editar
+         </a>
+         <button
+          mat-flat-button
+          color="warn"
+          type="button">
+          Borrar
 
+         </button>
+       </div>
     </div>
+  </div>
 
   </ng-container>
 
