@@ -92,7 +92,6 @@ export class FiltroPeliculaComponent implements OnInit {
             queryStrings.push(`enCines=${valoresFormulario.enCines}`);
         }
         this.location.replaceState('peliculas/buscar', queryStrings.join('&'));
-        debugger;
 
     }
 
