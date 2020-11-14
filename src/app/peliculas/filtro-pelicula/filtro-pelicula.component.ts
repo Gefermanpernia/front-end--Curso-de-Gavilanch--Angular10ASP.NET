@@ -1,5 +1,7 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-filtro-pelicula',
@@ -8,7 +10,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class FiltroPeliculaComponent implements OnInit {
 
-    constructor(private formBuilder: FormBuilder) {}
+    constructor(private formBuilder: FormBuilder,
+                private location: Location,
+                private activatedRoute: ActivatedRoute) {}
 
     form: FormGroup;
 
@@ -31,16 +35,68 @@ export class FiltroPeliculaComponent implements OnInit {
         generoId: 0,
         proximosEstrenos: false,
         enCines: false,
-    }
+    };
+
     ngOnInit(): void {
         this.form = this.formBuilder.group(this.formularioOriginal);
-        this.form.valueChanges.subscribe( valores => {
-            this.peliculas = this.peliculasOriginal;
-            this.buscarPelculas(valores);
+
+        this.leerValoresURL();
+        this.buscarPelculas(this.form.value);
+
+        this.form.valueChanges
+            .subscribe( valores => {
+
+                this.escribirParametrosBusquedaEnURL();
+                this.peliculas = this.peliculasOriginal;
+                this.buscarPelculas(valores);
         });
     }
 
-    buscarPelculas(valores: any): void{
+    private leerValoresURL() {
+
+        this.activatedRoute.queryParams.subscribe( (params) => {
+            let objeto: any = {};
+
+            if (params.titulo) {
+                objeto.titulo = params.titulo;
+            }
+            if (params.generoId) {
+                objeto.generoId = Number(params.generoId);
+            }
+            if (params.proximosEstrenos) {
+                objeto.proximosEstrenos = params.proximosEstrenos;
+            }
+            if (params.enCines) {
+                objeto.enCines = params.enCines;
+            }
+
+            this.form.patchValue(objeto);
+        });
+    }
+
+    private escribirParametrosBusquedaEnURL(){
+        let queryStrings = [];
+
+        let valoresFormulario = this.form.value;
+
+        if (valoresFormulario.titulo) {
+            queryStrings.push(`titulo=${valoresFormulario.titulo}`);
+        }
+        if (valoresFormulario.generoId !== 0) {
+            queryStrings.push(`generoId=${valoresFormulario.generoId}`);
+        }
+        if (valoresFormulario.proximosEstrenos) {
+            queryStrings.push(`proximosEstrenos=${valoresFormulario.proximosEstrenos}`);
+        }
+        if (valoresFormulario.enCines) {
+            queryStrings.push(`enCines=${valoresFormulario.enCines}`);
+        }
+        this.location.replaceState('peliculas/buscar', queryStrings.join('&'));
+        debugger;
+
+    }
+
+    buscarPelculas(valores: any){
         if (valores.titulo) {
             this.peliculas = this.peliculas
                             .filter(pelicula =>
