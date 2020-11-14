@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,13 +15,27 @@ export class CrearGenerosComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      nombre: '',
+      nombre: ['', {
+        validators: [Validators.required, Validators.minLength(3)]
+      }]
     });
   }
 
   guardarCambios(){
     // Guardar cambos
     this.router.navigate(['/generos']);
+  }
+
+  // tslint:disable-next-line: typedef
+  obtenerErrorCampoNombre(){
+    let campo =  this.form.get('nombre');
+    if (campo.hasError('required')) {
+      return 'El campo es requerido';
+    }
+    if (campo.hasError('minlength')){
+      return 'La longitud minima es de 3 caracteres';
+    }
+    return '';
   }
 
 }
