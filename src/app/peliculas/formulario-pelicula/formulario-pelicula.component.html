@@ -1,0 +1,52 @@
+<form (submit)="guardarCambios()" [formGroup]="form">
+  <!-- campo titulo -->
+  <mat-form-field appearance="outline">
+
+    <mat-label>Título</mat-label>
+    <input matInput formControlName="titulo" />
+    <mat-error>El campo título es requerido</mat-error>
+
+  </mat-form-field>
+
+  <!-- checkbox -->
+  <div class="contenedor_checkbox">
+    <mat-checkbox formControlName="enCine">En Cines</mat-checkbox>
+  </div>
+
+  <!-- trailer -->
+  <mat-form-field appearance="outline">
+    <mat-label>Trailer</mat-label>
+    <input formControlName="trailer" matInput/>
+  </mat-form-field>
+
+  <!-- fecha de lanzamiento -->
+  <mat-form-field appearance="outline">
+    <mat-label>Fecha de lanzamiento</mat-label>
+    <input formControlName="fechaLanzamiento" matInput [matDatepicker]="picker"/>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <!-- Imagen de poste -->
+<h4>Seleccionar Poster</h4>
+
+  <app-input-img
+  [urlImageActual]="modelo?.poster"
+  (archivoSeleccionado)="archivoSeleccionado($event);"></app-input-img>
+
+  <!-- Resumen -->
+  <h4>Resumen de la Peléula</h4>
+  <app-input-markdown
+  [contenidoMarkdown]="modelo?.resumen"
+  (changeMarkdown)="changeMarkdown($event)"
+  [placeholderTextarea]="'Resumen'"></app-input-markdown>
+
+  <div>
+    <button mat-flat-button color="primary" [disabled]="form.invalid">
+      Guardar Cambios
+    </button>
+    <a mat-stroked-button routerLink="/">
+      Cancelar
+    </a>
+  </div>
+</form>
