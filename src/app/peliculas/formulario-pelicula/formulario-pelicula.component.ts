@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MultipleSelectorModel } from 'src/app/utilidades/selector-multiple/multipleSelectorModel';
 import { PeliculaCreacionDTO, PeliculaDTO } from '../pelicula';
 
 @Component({
@@ -14,6 +15,22 @@ export class FormularioPeliculaComponent implements OnInit {
   modelo: PeliculaDTO;
   @Output()
   OnSubmit: EventEmitter<PeliculaCreacionDTO> = new EventEmitter<PeliculaCreacionDTO>();
+
+
+  generosNoSeleccionados: MultipleSelectorModel[] = [
+    {llave: 1, valor: 'drama'},
+    {llave: 2, valor: 'Comedia'},
+    {llave: 3, valor: 'Accion'},
+
+  ];
+  generosSeleccionados: MultipleSelectorModel[] = [];
+
+  cinesNoSeleccionados: MultipleSelectorModel[] = [
+    { llave: 1, valor: 'Sambil'},
+    { llave: 2, valor: 'Recreo'},
+    { llave: 3, valor: 'CCCT'},
+  ];
+  cinesSeleccionados: MultipleSelectorModel[] = [];
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -30,6 +47,8 @@ export class FormularioPeliculaComponent implements OnInit {
       trailer: '',
       fechaLanzamiento: '',
       poster: '',
+      generosId: '',
+      cinesId: '',
     });
 
     if (this.modelo !== undefined) {
@@ -37,15 +56,26 @@ export class FormularioPeliculaComponent implements OnInit {
     }
   }
 
-  guardarCambios(){
-    this.OnSubmit.emit(this.form.value);
-
-  }
 
   changeMarkdown(text: string){
     this.form.get('resumen').setValue(text);
   }
   archivoSeleccionado(file: File){
     this.form.get('poster').setValue(file);
+  }
+
+  guardarCambios(){
+
+    // Generos
+    const generosIds = this.generosSeleccionados.map(valor => valor.llave);
+    this.form.get('generosId').setValue(generosIds);
+
+    // Cines
+    const cinesIds = this.cinesSeleccionados.map(valor => valor.llave);
+    this.form.get('cinesId').setValue(cinesIds);
+
+
+    this.OnSubmit.emit(this.form.value);
+
   }
 }

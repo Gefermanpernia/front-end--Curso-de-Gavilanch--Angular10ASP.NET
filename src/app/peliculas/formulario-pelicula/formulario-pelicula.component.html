@@ -28,7 +28,7 @@
   </mat-form-field>
 
   <!-- Imagen de poste -->
-<h4>Seleccionar Poster</h4>
+  <h4>Seleccionar Poster</h4>
 
   <app-input-img
   [urlImageActual]="modelo?.poster"
@@ -41,6 +41,20 @@
   (changeMarkdown)="changeMarkdown($event)"
   [placeholderTextarea]="'Resumen'"></app-input-markdown>
 
+  <!-- Seleccion de Generos -->
+  <h4>Seleccione los Géneros</h4>
+  <app-selector-multiple
+  [seleccionados]="generosSeleccionados"
+  [noSeleccionados]="generosNoSeleccionados"></app-selector-multiple>
+
+
+  <!-- Selecion de cines -->
+  <h4>Seleccione los Cines</h4>
+  <app-selector-multiple
+  [seleccionados]="cinesSeleccionados"
+  [noSeleccionados]="cinesNoSeleccionados"></app-selector-multiple>
+
+  <!-- botones -->
   <div>
     <button mat-flat-button color="primary" [disabled]="form.invalid">
       Guardar Cambios
