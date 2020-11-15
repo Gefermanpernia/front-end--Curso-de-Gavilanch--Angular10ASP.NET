@@ -8,6 +8,9 @@ import { ListadoGenericoComponent } from './utilidades/listado-generico/listado-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MarkdownModule } from 'ngx-markdown';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import "leaflet/dist/images/marker-shadow.png"
 
 
 
@@ -27,6 +30,13 @@ import { EditarGenerosComponent } from './generos/editar-generos/editar-generos.
 import { EditarCineComponent } from './cines/editar-cine/editar-cine.component';
 import { EditarPeliculaComponent } from './pelicula/editar-pelicula/editar-pelicula.component';
 import { FiltroPeliculaComponent } from './peliculas/filtro-pelicula/filtro-pelicula.component';
+import { FormularioActoresComponent } from './actores/formulario-actores/formulario-actores.component';
+import { InputImgComponent } from './utilidades/input-img/input-img.component';
+import { InputMarkdownComponent } from './utilidades/input-markdown/input-markdown.component';
+import { FormularioCineComponent } from './cines/formulario-cine/formulario-cine.component';
+import { MapaComponent } from './utilidades/mapa/mapa.component';
+import { FormularioPeliculaComponent } from './peliculas/formulario-pelicula/formulario-pelicula.component';
+import { SelectorMultipleComponent } from './utilidades/selector-multiple/selector-multiple.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +57,14 @@ import { FiltroPeliculaComponent } from './peliculas/filtro-pelicula/filtro-peli
     EditarGenerosComponent,
     EditarCineComponent,
     EditarPeliculaComponent,
-    FiltroPeliculaComponent
+    FiltroPeliculaComponent,
+    FormularioActoresComponent,
+    InputImgComponent,
+    InputMarkdownComponent,
+    FormularioCineComponent,
+    MapaComponent,
+    FormularioPeliculaComponent,
+    SelectorMultipleComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +72,9 @@ import { FiltroPeliculaComponent } from './peliculas/filtro-pelicula/filtro-peli
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    LeafletModule,
+    MarkdownModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
