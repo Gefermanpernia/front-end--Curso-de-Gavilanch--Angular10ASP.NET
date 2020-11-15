@@ -8,11 +8,16 @@ import { cineCreacionDTO, cineDTO } from '../cine';
 })
 export class EditarCineComponent implements OnInit {
 
-  modelo: cineDTO = { nombre: 'Sambil'};
+  modelo: cineDTO = {
+    nombre: 'Sambil',
+    latitud: 10.497807463168124,
+    longitud:  -426.892147064209
+  };
   constructor() { }
 
   ngOnInit(): void {
   }
+
   guardarCambios(cine: cineCreacionDTO){
     console.log(cine);
   }

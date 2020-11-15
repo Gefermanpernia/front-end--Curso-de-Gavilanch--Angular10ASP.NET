@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { latLng, LeafletMouseEvent, marker, Marker, tileLayer } from 'leaflet';
+import { Coordenada } from './coordenada';
 
 @Component({
   selector: 'app-mapa',
@@ -8,6 +9,13 @@ import { latLng, LeafletMouseEvent, marker, Marker, tileLayer } from 'leaflet';
 })
 export class MapaComponent implements OnInit {
   constructor() {}
+
+  @Input()
+  coordenadasIniciales: Coordenada[] = [];
+
+  @Output()
+  coordenadaSeleccionada: EventEmitter<Coordenada> = new EventEmitter<Coordenada>();
+
   options = {
     layers: [
       tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -20,6 +28,11 @@ export class MapaComponent implements OnInit {
   };
 
   capas: Marker<any>[] = [];
+
+  ngOnInit(): void {
+    this.capas = this.coordenadasIniciales.map(valor => marker([valor.latitud, valor.longitud]));
+  }
+
   manejarClick(event: LeafletMouseEvent){
     const lat = event.latlng.lat;
     const lon = event.latlng.lng;
@@ -27,6 +40,7 @@ export class MapaComponent implements OnInit {
 
     this.capas = [];
     this.capas.push(marker([lat, lon]));
+    this.coordenadaSeleccionada.emit({latitud: lat, longitud: lon});
   }
-  ngOnInit(): void {}
+
 }
