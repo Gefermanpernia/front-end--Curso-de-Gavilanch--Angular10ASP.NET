@@ -12,7 +12,7 @@ export class FormularioActoresComponent implements OnInit {
 
     // tslint:disable-next-line: no-output-native
     @Output()
-    submit: EventEmitter<ActorCreacionDTO> = new EventEmitter<ActorCreacionDTO>();
+    OnSubmit: EventEmitter<ActorCreacionDTO> = new EventEmitter<ActorCreacionDTO>();
 
     @Input()
     modelo: actorDTO;
@@ -29,16 +29,20 @@ export class FormularioActoresComponent implements OnInit {
             ],
             fechaNacimiento: '',
             foto: '',
+            biografia: '',
         });
         if (this.modelo !== undefined) {
             this.form.patchValue(this.modelo);
         }
     }
+    cambioMarkdown(texto: string){
 
+        this.form.get('biografia').setValue(texto);
+    }
     archivoSeleccionado(file){
         this.form.get('foto').setValue(file);
     }
     onSubmit() {
-        this.submit.emit(this.form.value);
+        this.OnSubmit.emit(this.form.value);
     }
 }

@@ -18,6 +18,11 @@
     <!-- Selector de imagen -->
     <app-input-img [urlImageActual]="modelo?.foto" (archivoSeleccionado)="archivoSeleccionado($event)"></app-input-img>
 
+
+    <!-- Markdown -->
+    <app-input-markdown (changeMarkdown)="cambioMarkdown($event)"></app-input-markdown>
+
+
     <!-- Botones -->
     <div>
         <button mat-flat-button color="primary" [disabled]="form.invalid">
