@@ -28,6 +28,7 @@ import { EditarCineComponent } from './cines/editar-cine/editar-cine.component';
 import { EditarPeliculaComponent } from './pelicula/editar-pelicula/editar-pelicula.component';
 import { FiltroPeliculaComponent } from './peliculas/filtro-pelicula/filtro-pelicula.component';
 import { FormularioActoresComponent } from './actores/formulario-actores/formulario-actores.component';
+import { InputImgComponent } from './utilidades/input-img/input-img.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { FormularioActoresComponent } from './actores/formulario-actores/formula
     EditarCineComponent,
     EditarPeliculaComponent,
     FiltroPeliculaComponent,
-    FormularioActoresComponent
+    FormularioActoresComponent,
+    InputImgComponent
   ],
   imports: [
     BrowserModule,
