@@ -20,4 +20,7 @@ export class EditarPeliculaComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  guardarCambios(pelicula: PeliculaCreacionDTO){
+    console.log(pelicula);
+  }
 }
