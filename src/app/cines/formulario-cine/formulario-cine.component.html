@@ -1,4 +1,5 @@
 <form (submit)="OnSubmit()" [formGroup]="form">
+  <!-- campo nombre -->
   <mat-form-field appearance="outline">
 
     <mat-label>Nombre*</mat-label>
@@ -7,6 +8,14 @@
 
   </mat-form-field>
 
+  <!-- encapsulacion de mapas -->
+<div>
+  <app-mapa></app-mapa>
+
+</div>
+
+
+  <!-- Botones -->
   <div>
     <button mat-flat-button color="primary" [disabled]="form.invalid">
       Guardar Cambios
