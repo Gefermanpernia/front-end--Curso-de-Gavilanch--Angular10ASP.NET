@@ -16,7 +16,7 @@ import { IndiceGenersComponent } from './generos/indice-geners/indice-geners.com
 import { EditarGenerosComponent } from './generos/editar-generos/editar-generos.component';
 
 import { CrearPeliculaComponent } from './peliculas/crear-pelicula/crear-pelicula.component';
-import { EditarPeliculaComponent } from './pelicula/editar-pelicula/editar-pelicula.component';
+import { EditarPeliculaComponent } from './peliculas/editar-pelicula/editar-pelicula.component';
 import { FiltroPeliculaComponent } from './peliculas/filtro-pelicula/filtro-pelicula.component';
 
 

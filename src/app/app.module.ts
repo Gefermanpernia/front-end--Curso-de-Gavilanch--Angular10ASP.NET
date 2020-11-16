@@ -28,7 +28,7 @@ import { IndiceActoresComponent } from './actores/indice-actores/indice-actores.
 import { EditarActorComponent } from './actores/editar-actor/editar-actor.component';
 import { EditarGenerosComponent } from './generos/editar-generos/editar-generos.component';
 import { EditarCineComponent } from './cines/editar-cine/editar-cine.component';
-import { EditarPeliculaComponent } from './pelicula/editar-pelicula/editar-pelicula.component';
+import { EditarPeliculaComponent } from './peliculas/editar-pelicula/editar-pelicula.component';
 import { FiltroPeliculaComponent } from './peliculas/filtro-pelicula/filtro-pelicula.component';
 import { FormularioActoresComponent } from './actores/formulario-actores/formulario-actores.component';
 import { InputImgComponent } from './utilidades/input-img/input-img.component';
@@ -37,6 +37,7 @@ import { FormularioCineComponent } from './cines/formulario-cine/formulario-cine
 import { MapaComponent } from './utilidades/mapa/mapa.component';
 import { FormularioPeliculaComponent } from './peliculas/formulario-pelicula/formulario-pelicula.component';
 import { SelectorMultipleComponent } from './utilidades/selector-multiple/selector-multiple.component';
+import { AutocompleteActoresComponent } from './actores/autocomplete-actores/autocomplete-actores.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { SelectorMultipleComponent } from './utilidades/selector-multiple/select
     FormularioCineComponent,
     MapaComponent,
     FormularioPeliculaComponent,
-    SelectorMultipleComponent
+    SelectorMultipleComponent,
+    AutocompleteActoresComponent
   ],
   imports: [
     BrowserModule,
