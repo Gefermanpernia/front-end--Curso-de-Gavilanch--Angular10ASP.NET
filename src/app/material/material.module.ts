@@ -13,6 +13,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTableModule } from '@angular/material/table';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 
@@ -33,6 +34,7 @@ import { MatTableModule } from '@angular/material/table';
     MatTabsModule,
     MatAutocompleteModule,
     MatTableModule,
+    DragDropModule,
 
   ],
   imports: [CommonModule],
