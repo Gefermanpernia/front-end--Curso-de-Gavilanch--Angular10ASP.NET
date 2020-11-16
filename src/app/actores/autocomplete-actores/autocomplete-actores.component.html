@@ -21,6 +21,67 @@
 
 </form>
 
-<ul>
-  <li *ngFor="let actor of actoresSeleccionados"> {{actor.nombre}} </li>
-</ul>
+<table *ngIf="actoresSeleccionados.length > 0"
+  mat-table
+  [dataSource]="actoresSeleccionados"
+  class="mat-elevation-z8"
+  >
+  <!-- Columna de Titulo -->
+  <ng-container matColumnDef="imagen">
+    <!-- titulo de la columna -->
+    <th mat-header-cell *matHeaderCellDef>No.</th>
+    <!-- lo que contendra esta columna -->
+    <td mat-cell *matCellDef="let element">
+      <img [src]="element.foto" style="width: 50px;">
+    </td>
+
+  </ng-container>
+
+  <!-- Columna -->
+  <ng-container matColumnDef="nombre">
+
+    <!-- titulo de la columna -->
+    <th mat-header-cell *matHeaderCellDef>Nombre</th>
+
+    <!-- lo que contendra esta columna -->
+    <td mat-cell *matCellDef="let element">
+      {{element.nombre}}
+    </td>
+
+  </ng-container>
+
+  <!-- Columna -->
+  <ng-container matColumnDef="personaje">
+
+    <!-- titulo de la columna -->
+    <th mat-header-cell *matHeaderCellDef>Personaje</th>
+
+    <!-- lo que contendra esta columna -->
+    <td mat-cell *matCellDef="let element">
+      <mat-form-field appearance="outline" style="margin-top: 10px;">
+        <mat-label>Personaje</mat-label>
+        <input matInput [(ngModel)]="element.personaje"/>
+      </mat-form-field>
+    </td>
+
+  </ng-container>
+
+  <!-- Columna -->
+  <ng-container matColumnDef="acciones">
+
+    <!-- titulo de la columna -->
+    <th mat-header-cell *matHeaderCellDef>Acción</th>
+
+    <!-- lo que contendra esta columna -->
+    <td mat-cell *matCellDef="let element">
+      <mat-icon mat-list-icon (click)="eliminar(element)" >close</mat-icon>
+    </td>
+
+  </ng-container>
+
+
+
+  <!-- filas de la columna que se pasan por parametro -->
+  <tr mat-row *matRowDef="let row; columns: columnasAMostrar"></tr>
+
+</table>
