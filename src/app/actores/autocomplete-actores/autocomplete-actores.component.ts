@@ -35,7 +35,7 @@ export class AutocompleteActoresComponent implements OnInit {
       this.actores = this.actores.filter(actor => actor.nombre.toLowerCase().indexOf(valor.toLowerCase()) !== -1);
     });
   }
-  optionSelected(event: MatAutocompleteSelectedEvent){
+  optionSelected(event: MatAutocompleteSelectedEvent): void{
     console.log(event.option.value);
     if ( this.actoresSeleccionados.find(a => a === event.option.value)){
       this.control.patchValue('');
@@ -47,14 +47,13 @@ export class AutocompleteActoresComponent implements OnInit {
       this.table.renderRows();
     }
   }
-  
-  eliminar(actor: any){
+  eliminar(actor: any): void{
     const indice = this.actoresSeleccionados.findIndex(a => a.nombre === actor.nombre);
     this.actoresSeleccionados.splice(indice, 1);
     this.table.renderRows();
   }
 
-  finalizaArrastre(event: CdkDragDrop<any[]>){
+  finalizaArrastre(event: CdkDragDrop<any[]>): void{
     const indicePrevio = this.actoresSeleccionados.findIndex(
       actor => actor === event.item.data
     );
