@@ -26,7 +26,7 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('front-end');
   });
 
-  it('should render title', () => {
+  it('debería renderizar un párrafo', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;

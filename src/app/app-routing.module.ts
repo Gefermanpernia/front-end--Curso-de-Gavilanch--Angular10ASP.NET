@@ -11,39 +11,36 @@ import { CrearCineComponent } from './cines/crear-cine/crear-cine.component';
 import { IndiceCinesComponent } from './cines/indice-cines/indice-cines.component';
 import { EditarCineComponent } from './cines/editar-cine/editar-cine.component';
 
-import { CrearGenerosComponent } from './generos/crear-generos/crear-generos.component';
-import { IndiceGenersComponent } from './generos/indice-geners/indice-geners.component';
-import { EditarGenerosComponent } from './generos/editar-generos/editar-generos.component';
+import { CrearGeneroComponent } from './generos/crear-genero/crear-genero.component';
+import { IndiceGenerosComponent } from './generos/indice-generos/indice-generos.component';
+import { EditarGeneroComponent } from './generos/editar-genero/editar-genero.component';
 
 import { CrearPeliculaComponent } from './peliculas/crear-pelicula/crear-pelicula.component';
 import { EditarPeliculaComponent } from './peliculas/editar-pelicula/editar-pelicula.component';
-import { FiltroPeliculaComponent } from './peliculas/filtro-pelicula/filtro-pelicula.component';
+import { FiltroPeliculasComponent } from './peliculas/filtro-peliculas/filtro-peliculas.component';
 
 
 
 
 const routes: Routes = [
- { path: '', component: LandingPageComponent},
+  { path: '', component: LandingPageComponent},
 
- { path: 'generos', component: IndiceGenersComponent},
- { path: 'generos/crear', component: CrearGenerosComponent},
- { path: 'generos/editar/:id', component: EditarGenerosComponent},
+  { path: 'generos', component: IndiceGenerosComponent},
+  { path: 'generos/crear', component: CrearGeneroComponent},
+  { path: 'generos/editar/:id', component: EditarGeneroComponent},
 
- { path: 'actores', component: IndiceActoresComponent},
- { path: 'actores/crear', component: CrearActorComponent},
- { path: 'actores/editar/:id', component: EditarActorComponent},
+  { path: 'actores', component: IndiceActoresComponent},
+  { path: 'actores/crear', component: CrearActorComponent},
+  { path: 'actores/editar/:id', component: EditarActorComponent},
 
- { path: 'cines', component: IndiceCinesComponent},
- { path: 'cines/crear', component: CrearCineComponent},
- { path: 'cines/editar/:id', component: EditarCineComponent},
+  { path: 'cines', component: IndiceCinesComponent},
+  { path: 'cines/crear', component: CrearCineComponent},
+  { path: 'cines/editar/:id', component: EditarCineComponent},
 
- { path: 'peliculas/crear', component: CrearPeliculaComponent},
- { path: 'peliculas/editar/:id', component: EditarPeliculaComponent},
- { path: 'peliculas/buscar', component: FiltroPeliculaComponent},
-
-
-
- { path: '**', redirectTo: ''}
+  { path: 'peliculas/crear', component: CrearPeliculaComponent},
+  { path: 'peliculas/editar/:id', component: EditarPeliculaComponent},
+  { path: 'peliculas/buscar', component: FiltroPeliculasComponent},
+  { path: '**', redirectTo: ''}
 ];
 
 @NgModule({

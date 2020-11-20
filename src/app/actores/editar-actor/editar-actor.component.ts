@@ -1,28 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ActorCreacionDTO, actorDTO } from '../actor';
+import { actorCreacionDTO, actorDTO } from '../actor';
 
 @Component({
-    selector: 'app-editar-actor',
-    templateUrl: './editar-actor.component.html',
-    styleUrls: ['./editar-actor.component.css'],
+  selector: 'app-editar-actor',
+  templateUrl: './editar-actor.component.html',
+  styleUrls: ['./editar-actor.component.css']
 })
 export class EditarActorComponent implements OnInit {
 
-    modelo: actorDTO = {
-        nombre: 'Geferman',
-        fechaNacimiento: new Date(),
-        foto: 'https://m.media-amazon.com/images/M/MV5BNTAzMzA3NjQwOF5BMl5BanBnXkFtZTgwMDUzODQ5MTI@._V1_UY317_CR23,0,214,317_AL_.jpg'
-    };
+  modelo: actorDTO = {
+    nombre: 'Geferman',
+    fechaNacimiento: new Date(),
+    foto: 'https://m.media-amazon.com/images/M/MV5BNTAzMzA3NjQwOF5BMl5BanBnXkFtZTgwMDUzODQ5MTI@._V1_UY317_CR23,0,214,317_AL_.jpg'
+  };
 
-    constructor(private activatedRoute: ActivatedRoute) {}
+  constructor(private activatedRoute: ActivatedRoute) {}
 
-    ngOnInit(): void {
-        this.activatedRoute.params.subscribe((resp) => {
-            // alert(resp.id);
-        });
-    }
-    guardarCambios(actor: ActorCreacionDTO){
-        console.log(actor);
-    }
+  ngOnInit(): void {
+    this.activatedRoute.params.subscribe(params => {
+      // alert(params.id);
+    });
+  }
+
+  guardarCambios(actor: actorCreacionDTO){
+    console.log(actor);
+  }
+
 }

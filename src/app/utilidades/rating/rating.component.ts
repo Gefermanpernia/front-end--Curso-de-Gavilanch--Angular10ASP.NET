@@ -11,28 +11,26 @@ export class RatingComponent implements OnInit {
   maximoRating = 5;
   @Input()
   ratingSeleccionado = 0;
-
   @Output()
   rated: EventEmitter<number> = new EventEmitter<number>();
-
   maximoRatingArr = [];
   votado = false;
-  ratingAnterior: number;
+  ratingAnterior;
 
   constructor() { }
 
   ngOnInit(): void {
-
-      this.maximoRatingArr = Array(this.maximoRating).fill(0);
+    this.maximoRatingArr = Array(this.maximoRating).fill(0);
   }
+
   manejarMouseEnter(index: number): void{
     this.ratingSeleccionado = index + 1;
   }
 
-  manejarMouseLeave(): void{
-    if (this.ratingAnterior !== 0) {
+  manejarMouseLeave(){
+    if (this.ratingAnterior !== 0){
       this.ratingSeleccionado = this.ratingAnterior;
-    }else{
+    } else{
       this.ratingSeleccionado = 0;
     }
   }
@@ -43,4 +41,5 @@ export class RatingComponent implements OnInit {
     this.ratingAnterior = this.ratingSeleccionado;
     this.rated.emit(this.ratingSeleccionado);
   }
+
 }

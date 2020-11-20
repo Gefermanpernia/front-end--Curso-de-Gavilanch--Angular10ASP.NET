@@ -1,17 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { ActorCreacionDTO } from '../actor';
+import { actorCreacionDTO } from '../actor';
 
 @Component({
-    selector: 'app-crear-actor',
-    templateUrl: './crear-actor.component.html',
-    styleUrls: ['./crear-actor.component.css'],
+  selector: 'app-crear-actor',
+  templateUrl: './crear-actor.component.html',
+  styleUrls: ['./crear-actor.component.css']
 })
 export class CrearActorComponent implements OnInit {
-    constructor() {}
 
-    ngOnInit(): void {}
+  constructor() { }
 
-    guardarCambios(actor: ActorCreacionDTO) {
-        console.log(actor);
-    }
+  ngOnInit(): void {
+  }
+
+  guardarCambios(actor: actorCreacionDTO){
+    console.log(actor);
+    
+  }
+
 }

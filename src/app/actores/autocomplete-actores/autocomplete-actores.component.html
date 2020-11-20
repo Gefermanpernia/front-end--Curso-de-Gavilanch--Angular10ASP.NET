@@ -11,7 +11,7 @@
   </mat-form-field>
 
   <mat-autocomplete #auto
-    (optionSelected)="optionSelected($event)"
+  (optionSelected)="optionSelected($event)"
   >
     <mat-option *ngFor="let opcion of actores" [value]="opcion">
       <img [src]="opcion.foto" /> {{opcion.nombre}}
@@ -22,10 +22,10 @@
 </form>
 
 <table
-  *ngIf="actoresSeleccionados.length > 0"
-  mat-table
-  [dataSource]="actoresSeleccionados"
-  class="mat-elevation-z8"
+*ngIf="actoresSeleccionados.length > 0"
+mat-table
+[dataSource]="actoresSeleccionados"
+class="mat-elevation-z8"
   cdkDropList
   [cdkDropListData]="actoresSeleccionados"
   (cdkDropListDropped)="finalizaArrastre($event)"
@@ -54,7 +54,7 @@
 
   </ng-container>
 
-  <!-- Columna -->
+    <!-- Columna -->
   <ng-container matColumnDef="personaje">
 
     <!-- titulo de la columna -->
@@ -78,7 +78,9 @@
 
     <!-- lo que contendra esta columna -->
     <td mat-cell *matCellDef="let element">
-      <mat-icon mat-list-icon (click)="eliminar(element)" >close</mat-icon>
+      <mat-icon mat-list-icon (click)="eliminar(element)">
+        close
+      </mat-icon>
     </td>
 
   </ng-container>
@@ -87,7 +89,7 @@
 
   <!-- filas de la columna que se pasan por parametro -->
   <tr mat-row *matRowDef="let row; columns: columnasAMostrar"
-    ckdDrag [cdkDragData]="row"
-  ></tr>
+  cdkDrag [cdkDragData]="row"></tr>
+
 
 </table>

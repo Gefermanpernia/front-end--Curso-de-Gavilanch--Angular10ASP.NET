@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListadoPeliculasComponent } from './peliculas/listado-peliculas/listado-peliculas.component';
@@ -12,7 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MarkdownModule } from 'ngx-markdown';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-import "leaflet/dist/images/marker-shadow.png"
+import 'leaflet/dist/images/marker-shadow.png';
 
 
 
@@ -20,18 +19,20 @@ import { MaterialModule } from './material/material.module';
 import { MenuComponent } from './menu/menu.component';
 import { RatingComponent } from './utilidades/rating/rating.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { IndiceGenersComponent } from './generos/indice-geners/indice-geners.component';
-import { CrearGenerosComponent } from './generos/crear-generos/crear-generos.component';
-import { CrearPeliculaComponent } from './peliculas/crear-pelicula/crear-pelicula.component';
-import { IndiceCinesComponent } from './cines/indice-cines/indice-cines.component';
-import { CrearCineComponent } from './cines/crear-cine/crear-cine.component';
-import { CrearActorComponent } from './actores/crear-actor/crear-actor.component';
+import { IndiceGenerosComponent } from './generos/indice-generos/indice-generos.component';
+import { CrearGeneroComponent } from './generos/crear-genero/crear-genero.component';
 import { IndiceActoresComponent } from './actores/indice-actores/indice-actores.component';
+import { CrearActorComponent } from './actores/crear-actor/crear-actor.component';
+import { CrearPeliculaComponent } from './peliculas/crear-pelicula/crear-pelicula.component';
+import { CrearCineComponent } from './cines/crear-cine/crear-cine.component';
+import { IndiceCinesComponent } from './cines/indice-cines/indice-cines.component';
+
 import { EditarActorComponent } from './actores/editar-actor/editar-actor.component';
-import { EditarGenerosComponent } from './generos/editar-generos/editar-generos.component';
+import { EditarGeneroComponent } from './generos/editar-genero/editar-genero.component';
 import { EditarCineComponent } from './cines/editar-cine/editar-cine.component';
+import { FiltroPeliculasComponent } from './peliculas/filtro-peliculas/filtro-peliculas.component';
 import { EditarPeliculaComponent } from './peliculas/editar-pelicula/editar-pelicula.component';
-import { FiltroPeliculaComponent } from './peliculas/filtro-pelicula/filtro-pelicula.component';
+import { FormularioGeneroComponent } from './generos/formulario-genero/formulario-genero.component';
 import { FormularioActoresComponent } from './actores/formulario-actores/formulario-actores.component';
 import { InputImgComponent } from './utilidades/input-img/input-img.component';
 import { InputMarkdownComponent } from './utilidades/input-markdown/input-markdown.component';
@@ -49,18 +50,19 @@ import { AutocompleteActoresComponent } from './actores/autocomplete-actores/aut
     MenuComponent,
     RatingComponent,
     LandingPageComponent,
-    IndiceGenersComponent,
-    CrearGenerosComponent,
+    IndiceGenerosComponent,
+    CrearGeneroComponent,
     IndiceActoresComponent,
     CrearActorComponent,
     CrearPeliculaComponent,
-    IndiceCinesComponent,
     CrearCineComponent,
+    IndiceCinesComponent,
     EditarActorComponent,
-    EditarGenerosComponent,
+    EditarGeneroComponent,
     EditarCineComponent,
     EditarPeliculaComponent,
-    FiltroPeliculaComponent,
+    FormularioGeneroComponent,
+    FiltroPeliculasComponent,
     FormularioActoresComponent,
     InputImgComponent,
     InputMarkdownComponent,
@@ -68,7 +70,7 @@ import { AutocompleteActoresComponent } from './actores/autocomplete-actores/aut
     MapaComponent,
     FormularioPeliculaComponent,
     SelectorMultipleComponent,
-    AutocompleteActoresComponent
+    AutocompleteActoresComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,6 +84,6 @@ import { AutocompleteActoresComponent } from './actores/autocomplete-actores/aut
     MarkdownModule.forRoot(),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

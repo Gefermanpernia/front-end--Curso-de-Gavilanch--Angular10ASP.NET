@@ -1,15 +1,12 @@
 form {
-    max-width: 500px;
-}
-
-mat-form-field {
     width: 100%;
 }
 
-button {
+form mat-form-field {
+    width: 30%;
     margin-right: 1rem;
 }
 
-.contenedor-checkbox{
+.contenedor-limpiar{
     margin-bottom: 1rem;
 }

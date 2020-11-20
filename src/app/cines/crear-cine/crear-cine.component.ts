@@ -12,6 +12,7 @@ export class CrearCineComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   guardarCambios(cine: cineCreacionDTO){
     console.log(cine);
   }

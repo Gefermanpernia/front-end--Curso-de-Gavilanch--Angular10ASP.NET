@@ -1,48 +1,50 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActorCreacionDTO, actorDTO } from '../actor';
+import { actorCreacionDTO, actorDTO } from '../actor';
 
 @Component({
-    selector: 'app-formulario-actores',
-    templateUrl: './formulario-actores.component.html',
-    styleUrls: ['./formulario-actores.component.css'],
+  selector: 'app-formulario-actores',
+  templateUrl: './formulario-actores.component.html',
+  styleUrls: ['./formulario-actores.component.css'],
 })
 export class FormularioActoresComponent implements OnInit {
-    form: FormGroup;
+  constructor(private formBuilder: FormBuilder) {}
 
-    // tslint:disable-next-line: no-output-native
-    @Output()
-    OnSubmit: EventEmitter<ActorCreacionDTO> = new EventEmitter<ActorCreacionDTO>();
+  form: FormGroup;
 
-    @Input()
-    modelo: actorDTO;
+  @Input()
+  modelo: actorDTO;
 
-    constructor(private formBuilder: FormBuilder) {}
+  @Output()
+  OnSubmit: EventEmitter<actorCreacionDTO> = new EventEmitter<actorCreacionDTO>();
 
-    ngOnInit(): void {
-        this.form = this.formBuilder.group({
-            nombre: [
-                '',
-                {
-                    validators: [Validators.required],
-                },
-            ],
-            fechaNacimiento: '',
-            foto: '',
-            biografia: '',
-        });
-        if (this.modelo !== undefined) {
-            this.form.patchValue(this.modelo);
-        }
+  ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      nombre: [
+        '',
+        {
+          validators: [Validators.required],
+        },
+      ],
+      fechaNacimiento: '',
+      foto: '',
+      biografia: ''
+    });
+
+    if (this.modelo !== undefined){
+      this.form.patchValue(this.modelo)
     }
-    cambioMarkdown(texto: string){
+  }
 
-        this.form.get('biografia').setValue(texto);
-    }
-    archivoSeleccionado(file){
-        this.form.get('foto').setValue(file);
-    }
-    onSubmit() {
-        this.OnSubmit.emit(this.form.value);
-    }
+  archivoSeleccionado(file){
+    this.form.get('foto').setValue(file);
+  }
+
+  cambioMarkdown(texto: string){
+    this.form.get('biografia').setValue(texto);
+  }
+
+  onSubmit(){
+    this.OnSubmit.emit(this.form.value);
+  }
 }

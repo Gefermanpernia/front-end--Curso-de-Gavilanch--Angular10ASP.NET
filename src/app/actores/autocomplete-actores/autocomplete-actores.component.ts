@@ -16,6 +16,8 @@ interface Actor {
 })
 export class AutocompleteActoresComponent implements OnInit {
 
+  constructor() { }
+
   control: FormControl = new FormControl();
   actores = [
     {nombre: 'tom holland', personaje: '' , foto: 'https://m.media-amazon.com/images/M/MV5BNTAzMzA3NjQwOF5BMl5BanBnXkFtZTgwMDUzODQ5MTI@._V1_UY317_CR23,0,214,317_AL_.jpg'},
@@ -30,9 +32,6 @@ export class AutocompleteActoresComponent implements OnInit {
 
   // tomamos una referencia de la tabla
   @ViewChild(MatTable) table: MatTable<any>;
-
-
-  constructor() { }
 
   ngOnInit(): void {
     this.control.valueChanges.subscribe((valor: string| Actor) => {
