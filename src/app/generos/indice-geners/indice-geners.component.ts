@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GenerosService } from '../generos.service';
 
 @Component({
   selector: 'app-indice-geners',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndiceGenersComponent implements OnInit {
 
-  constructor() { }
+  constructor(private generosService: GenerosService) { }
 
   ngOnInit(): void {
+    this.generosService.obtenerTodo().subscribe(generos => {
+      console.log(generos);
+
+    }, error => console.error(error));
   }
 
 }
