@@ -1,6 +1,7 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { error } from 'protractor';
 import { generoDTO } from '../genero';
 import { GenerosService } from '../generos.service';
 
@@ -34,5 +35,12 @@ export class IndiceGenerosComponent implements OnInit {
     this.paginaActual = datos.pageIndex + 1;
     this.cantidadRegistrosAMostrar = datos.pageSize;
     this.cargarRegistros(this.paginaActual, this.cantidadRegistrosAMostrar);
+  }
+
+  borrar(id: number){
+    this.generosService.borrar(id)
+    .subscribe( () => {
+      this.cargarRegistros(this.paginaActual, this.cantidadRegistrosAMostrar);
+    }, err =>  console.error(err) );
   }
 }
