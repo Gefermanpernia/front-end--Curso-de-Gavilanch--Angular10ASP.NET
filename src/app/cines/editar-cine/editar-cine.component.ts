@@ -15,10 +15,12 @@ export class EditarCineComponent implements OnInit {
   };
   constructor() { }
 
+
   ngOnInit(): void {
   }
 
   guardarCambios(cine: cineCreacionDTO){
     console.log(cine);
   }
+
 }

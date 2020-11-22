@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PeliculaCreacionDTO, PeliculaDTO } from 'src/app/peliculas/pelicula';
+import {  PeliculaCreacionDTO, PeliculaDTO } from '../pelicula';
 
 @Component({
   selector: 'app-editar-pelicula',
@@ -9,18 +9,15 @@ import { PeliculaCreacionDTO, PeliculaDTO } from 'src/app/peliculas/pelicula';
 export class EditarPeliculaComponent implements OnInit {
 
   constructor() { }
-  modelo: PeliculaDTO = {
-    titulo: 'spider',
-    enCine: true,
-    fechaLanzamiento: new Date(),
-    poster: 'https://m.media-amazon.com/images/M/MV5BZDEyN2NhMjgtMjdhNi00MmNlLWE5YTgtZGE4MzNjMTRlMGEwXkEyXkFqcGdeQXVyNDUyOTg3Njg@._V1_UX182_CR0,0,182,268_AL_.jpg',
-    resumen: 'asdasdasdas',
-    trailer: 'link'
-  };
+
+  modelo: PeliculaDTO = {titulo: 'Spider-Man', 'trailer': 'abc', enCines: true, resumen: 'cosa',
+fechaLanzamiento: new Date(), poster: 'https://m.media-amazon.com/images/M/MV5BMjMwNDkxMTgzOF5BMl5BanBnXkFtZTgwNTkwNTQ3NjM@._V1_UX182_CR0,0,182,268_AL_.jpg'}
+
   ngOnInit(): void {
   }
 
   guardarCambios(pelicula: PeliculaCreacionDTO){
     console.log(pelicula);
   }
+
 }

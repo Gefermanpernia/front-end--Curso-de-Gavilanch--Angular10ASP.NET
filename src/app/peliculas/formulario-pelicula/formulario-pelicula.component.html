@@ -1,70 +1,60 @@
 <form (submit)="guardarCambios()" [formGroup]="form">
-  <!-- campo titulo -->
   <mat-form-field appearance="outline">
-
-    <mat-label>Título</mat-label>
-    <input matInput formControlName="titulo" />
-    <mat-error>El campo título es requerido</mat-error>
-
+    <mat-label>Título*</mat-label>
+    <input formControlName="titulo" matInput />
+    <mat-error> El campo título es requerido </mat-error>
   </mat-form-field>
 
-  <!-- checkbox -->
-  <div class="contenedor_checkbox">
-    <mat-checkbox formControlName="enCine">En Cines</mat-checkbox>
+  <div class="contenedor-checkbox">
+      <mat-checkbox formControlName="enCines">En cines</mat-checkbox>
   </div>
 
-  <!-- trailer -->
-  <mat-form-field appearance="outline">
-    <mat-label>Trailer</mat-label>
-    <input formControlName="trailer" matInput/>
+  <mat-form-field appearance="outline"> 
+    <mat-label>Trailer</mat-label>    
+    <input formControlName="trailer" matInput />
   </mat-form-field>
 
-  <!-- fecha de lanzamiento -->
   <mat-form-field appearance="outline">
-    <mat-label>Fecha de lanzamiento</mat-label>
-    <input formControlName="fechaLanzamiento" matInput [matDatepicker]="picker"/>
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
+      <mat-label>Fecha de Lanzamiento</mat-label>
+      <input formControlName="fechaLanzamiento" matInput [matDatepicker]="picker" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
-  <!-- Imagen de poste -->
   <h4>Seleccionar Poster</h4>
 
-  <app-input-img
-  [urlImageActual]="modelo?.poster"
-  (archivoSeleccionado)="archivoSeleccionado($event);"></app-input-img>
+  <app-input-img 
+    [urlImagenActual]="modelo?.poster"
+  (archivoSeleccionado)="archivoSeleccionado($event)"></app-input-img>
 
-  <!-- Resumen -->
-  <h4>Resumen de la Peléula</h4>
-  <app-input-markdown
+  <h4>Resumen de la Película</h4>
+
+  <app-input-markdown 
   [contenidoMarkdown]="modelo?.resumen"
   (changeMarkdown)="changeMarkdown($event)"
-  [placeholderTextarea]="'Resumen'"></app-input-markdown>
+  [placeHolderTextarea]="'Resumen'"></app-input-markdown>
 
-  <!-- Seleccion de Generos -->
-  <h4>Seleccione los Géneros</h4>
-  <app-selector-multiple
-  [seleccionados]="generosSeleccionados"
-  [noSeleccionados]="generosNoSeleccionados"></app-selector-multiple>
+  <h4>Seleccione los géneros</h4>
 
+  <app-selector-multiple 
+  [Seleccionados]="generosSeleccionados"
+  [NoSeleccionados]="generosNoSeleccionados"></app-selector-multiple>
 
-  <!-- Selecion de cines -->
-  <h4>Seleccione los Cines</h4>
-  <app-selector-multiple
-  [seleccionados]="cinesSeleccionados"
-  [noSeleccionados]="cinesNoSeleccionados"></app-selector-multiple>
+  <h4>Seleccione los cines</h4>
+
+  <app-selector-multiple 
+  [Seleccionados]="cinesSeleccionados"
+  [NoSeleccionados]="cinesNoSeleccionados"></app-selector-multiple>
 
   <h4>Seleccione los actores</h4>
 
   <app-autocomplete-actores></app-autocomplete-actores>
 
-  <!-- botones -->
   <div>
-    <button mat-flat-button color="primary" [disabled]="form.invalid">
-      Guardar Cambios
-    </button>
-    <a mat-stroked-button routerLink="/">
-      Cancelar
-    </a>
+      <button mat-flat-button color="primary" [disabled]="form.invalid">
+          Guardar Cambios
+      </button>
+      <a mat-stroked-button routerLink="/">Cancelar</a>
   </div>
+
 </form>

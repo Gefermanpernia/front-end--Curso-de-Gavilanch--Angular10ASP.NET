@@ -12,7 +12,9 @@ export class CrearPeliculaComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   guardarCambios(pelicula: PeliculaCreacionDTO){
     console.log(pelicula);
   }
+  
 }
