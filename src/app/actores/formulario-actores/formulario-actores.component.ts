@@ -18,8 +18,9 @@ export class FormularioActoresComponent implements OnInit {
   modelo: actorDTO;
 
   @Output()
-  OnSubmit: EventEmitter<actorCreacionDTO> = new EventEmitter<actorCreacionDTO>();
+  onSubmit: EventEmitter<actorCreacionDTO> = new EventEmitter<actorCreacionDTO>();
 
+  imagenCambiada = false;
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       nombre: [
@@ -39,6 +40,7 @@ export class FormularioActoresComponent implements OnInit {
   }
 
   archivoSeleccionado(file){
+    this.imagenCambiada = true;
     this.form.get('foto').setValue(file);
   }
 
@@ -46,7 +48,10 @@ export class FormularioActoresComponent implements OnInit {
     this.form.get('biografia').setValue(texto);
   }
 
-  onSubmit(){
-    this.OnSubmit.emit(this.form.value);
+  OnSubmit(){
+    if (!this.imagenCambiada) {
+      this.form.patchValue({'foto':null});
+    }
+    this.onSubmit.emit(this.form.value);
   }
 }
