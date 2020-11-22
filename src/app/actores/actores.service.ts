@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { formatearFecha } from '../utilidades/utilidades';
-import { actorCreacionDTO } from './actor';
+import { actorCreacionDTO, actorDTO } from './actor';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,17 @@ export class ActoresService {
 
   private apiURL = environment.apiURL + 'actores';
 
+  public obtenerTodo(pagina: number, cantidadRegistroAMostrar: number): Observable<any>{
+    let params = new HttpParams()
+    .set('pagina', pagina.toString())
+    .set('recordsPorPagina', cantidadRegistroAMostrar.toString());
+    return this.http.get<actorDTO[]>(this.apiURL, {observe: 'response', params });
+  }
 
+
+  public borrar(id: number){
+    return this.http.delete(`${this.apiURL}/${id}`);
+  }
   /**
    * crear
    */
